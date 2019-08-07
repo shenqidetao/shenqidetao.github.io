@@ -5,18 +5,19 @@
   
 
   
-  <title>deep_dive</title>
+  <title>一个简单的RPG游戏体验 | deep_dive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="sharing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="deep_dive">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="一些说明：这是C++课程的一次实验（程序还不完善，人物未完全实现（第一次用Markdown编写，用法还不太熟悉，界面美观性有缺VS2017基本玩法：1.创建角色，选择职业（这里暂时只实现了swordsman的代码，所以暂时只能选swordsman）2.默认你的对手是什么；3.展示你和你对手的状态，包括血量和魔法值（本题用了容器写了一个背包，里面放置你拥有的治疗药水和魔法药水）4.战斗，你可以选择普">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个简单的RPG游戏体验">
+<meta property="og:url" content="http://yoursite.com/2019/08/06/实验/一个简单的RPG游戏体验/index.html">
 <meta property="og:site_name" content="deep_dive">
-<meta property="og:description" content="sharing">
+<meta property="og:description" content="一些说明：这是C++课程的一次实验（程序还不完善，人物未完全实现（第一次用Markdown编写，用法还不太熟悉，界面美观性有缺VS2017基本玩法：1.创建角色，选择职业（这里暂时只实现了swordsman的代码，所以暂时只能选swordsman）2.默认你的对手是什么；3.展示你和你对手的状态，包括血量和魔法值（本题用了容器写了一个背包，里面放置你拥有的治疗药水和魔法药水）4.战斗，你可以选择普">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-06T08:41:02.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="deep_dive">
-<meta name="twitter:description" content="sharing">
+<meta name="twitter:title" content="一个简单的RPG游戏体验">
+<meta name="twitter:description" content="一些说明：这是C++课程的一次实验（程序还不完善，人物未完全实现（第一次用Markdown编写，用法还不太熟悉，界面美观性有缺VS2017基本玩法：1.创建角色，选择职业（这里暂时只实现了swordsman的代码，所以暂时只能选swordsman）2.默认你的对手是什么；3.展示你和你对手的状态，包括血量和魔法值（本题用了容器写了一个背包，里面放置你拥有的治疗药水和魔法药水）4.战斗，你可以选择普">
   
     <link rel="alternate" href="/atom.xml" title="deep_dive" type="application/atom+xml">
   
@@ -67,48 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-数字图像边缘检测" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/07/数字图像边缘检测/" class="article-date">
-  <time datetime="2019-08-07T00:51:06.000Z" itemprop="datePublished">2019-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/数字图像边缘检测/">数字图像边缘检测&amp;边缘检测LVQ神经网络（计划是完成人脸识别朝向，会动态更新</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="数字图像边缘检测的原理及方法"><a href="#数字图像边缘检测的原理及方法" class="headerlink" title="数字图像边缘检测的原理及方法"></a>数字图像边缘检测的原理及方法</h2><p>边缘是要提取目标与背景的边界线，只有检测出边缘信息才能把目标从背景中分离出来，并用于目标区域的识别、图像分割和图像滤波等，通过对边缘信息的检测可以最大程度地减少图像分析处理过程中的巨大数据量。图像中的边缘检测主要针对图像灰度变化的度量检测和定位，就是检测图像特性变化的位置，边缘的描述包含以下几个方面。<br>1.边缘的法线方向：在某点灰度变化最剧烈的方向，与边缘方向垂直。<br>2.边缘方向：与边缘法线方向垂直，是目标边界的切线方向。<br>3.边缘位置：边缘所在的坐标位置。<br>4.边缘强度：沿边缘法线方向图像局部变化强度的量度。<br>（因为我比较渣，还不会用公式编辑器，所以就手写拍照了<br><img src="https://note.youdao.com/yws/api/personal/file/WEBc85d0d7063f38e477248efb3f66b17cb?method=getImage&amp;version=9&amp;cstk=s1wY-l8J" alt=""></p>
-<h3 id="实现样例"><a href="#实现样例" class="headerlink" title="实现样例"></a>实现样例</h3><p>MATLAB在边缘检测方面常用的几种算子有：Roberts,Sobel,Prewitt,Laplacian和Canny等。通过调用edge函数可以十分方便地实现对图像的边缘检测。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">clear all;</span><br><span class="line">I=imread(&apos;circuit.tif&apos;);</span><br><span class="line">BW1=edge(I,&apos;prewitt&apos;);</span><br><span class="line">BW2=edge(I,&apos;canny&apos;);</span><br><span class="line">figure(&apos;name&apos;,&apos;灰度图像与边缘图像&apos;,&apos;numbertitle&apos;,&apos;off&apos;)</span><br><span class="line">subplot(131);</span><br><span class="line">imshow(I);</span><br><span class="line">title(&apos;灰度图像&apos;,&apos;fontsize&apos;,16)</span><br><span class="line">subplot(132);</span><br><span class="line">imshow(BW1);</span><br><span class="line">title(&apos;Prewitt算子检测边缘图像&apos;,&apos;fontsize&apos;,16)</span><br><span class="line">subplot(133);</span><br><span class="line">imshow(BW2);</span><br><span class="line">title(&apos;Canny算子检测边缘图像&apos;,&apos;fontsize&apos;,16)</span><br></pre></td></tr></table></figure></p>
-<p>如下图，可以看出Prewitt和Canny算子对图像边缘均有较好的提取效果<br><img src="https://note.youdao.com/yws/api/personal/file/WEBd900b6fd7e510a3f3a82520175482576?method=getImage&amp;version=7&amp;cstk=s1wY-l8J" alt=""></p>
-<h2 id="边缘检测–LVQ神经网络的原理与方法"><a href="#边缘检测–LVQ神经网络的原理与方法" class="headerlink" title="边缘检测–LVQ神经网络的原理与方法"></a>边缘检测–LVQ神经网络的原理与方法</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/数字图像边缘检测/" data-id="cjz0kfvf40001nwvqrfn6i9qh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-实验/一个简单的RPG游戏体验" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-实验/一个简单的RPG游戏体验" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/06/实验/一个简单的RPG游戏体验/" class="article-date">
   <time datetime="2019-08-06T08:03:40.000Z" itemprop="datePublished">2019-08-06</time>
@@ -121,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/06/实验/一个简单的RPG游戏体验/">一个简单的RPG游戏体验</a>
+    <h1 class="article-title" itemprop="name">
+      一个简单的RPG游戏体验
     </h1>
   
 
@@ -163,93 +123,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-程序设计ACM/校onlinejudge整理（持续更新" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/06/程序设计ACM/校onlinejudge整理（持续更新/" class="article-date">
-  <time datetime="2019-08-06T04:21:07.000Z" itemprop="datePublished">2019-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2019/08/07/数字图像边缘检测/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/06/程序设计ACM/校onlinejudge整理（持续更新/">校onlinejudge整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##标签<br>[1]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/06/程序设计ACM/校onlinejudge整理（持续更新/" data-id="cjz0kfvgd0003nwvqoloksmny" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/19/hello-world/" class="article-date">
-  <time datetime="2018-10-19T15:19:46.038Z" itemprop="datePublished">2018-10-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          数字图像边缘检测&amp;边缘检测LVQ神经网络（计划是完成人脸识别朝向，会动态更新
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/19/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2019/08/06/程序设计ACM/校onlinejudge整理（持续更新/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">校onlinejudge整理</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/19/hello-world/" data-id="cjz0kfvf00000nwvqoaokwzvt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
