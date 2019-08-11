@@ -69,6 +69,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-数字图像色彩分层提取" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/09/数字图像色彩分层提取/" class="article-date">
+  <time datetime="2019-08-09T06:32:57.000Z" itemprop="datePublished">2019-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/09/数字图像色彩分层提取/">数字图像提取</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/09/数字图像色彩分层提取/" data-id="cjz3qi1ky0001wwvque2tdpyu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-数字图像边缘检测" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/07/数字图像边缘检测/" class="article-date">
@@ -83,7 +119,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/数字图像边缘检测/">数字图像边缘检测&amp;边缘检测LVQ神经网络（计划是完成人脸识别朝向，会动态更新</a>
+      <a class="article-title" href="/2019/08/07/数字图像边缘检测/">图像识别（会步步深入，计划是完成人脸识别朝向，再之后可能会做复杂一点的人脸识别问题，会动态更新</a>
     </h1>
   
 
@@ -91,10 +127,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="数字图像边缘检测的原理及方法"><a href="#数字图像边缘检测的原理及方法" class="headerlink" title="数字图像边缘检测的原理及方法"></a>数字图像边缘检测的原理及方法</h2><p>边缘是要提取目标与背景的边界线，只有检测出边缘信息才能把目标从背景中分离出来，并用于目标区域的识别、图像分割和图像滤波等，通过对边缘信息的检测可以最大程度地减少图像分析处理过程中的巨大数据量。图像中的边缘检测主要针对图像灰度变化的度量检测和定位，就是检测图像特性变化的位置，边缘的描述包含以下几个方面。<br>1.边缘的法线方向：在某点灰度变化最剧烈的方向，与边缘方向垂直。<br>2.边缘方向：与边缘法线方向垂直，是目标边界的切线方向。<br>3.边缘位置：边缘所在的坐标位置。<br>4.边缘强度：沿边缘法线方向图像局部变化强度的量度。<br>（因为我比较渣，还不会用公式编辑器，所以就手写拍照了<br><img src="https://note.youdao.com/yws/api/personal/file/WEBc85d0d7063f38e477248efb3f66b17cb?method=getImage&amp;version=11&amp;cstk=s1wY-l8J" alt=""></p>
+        <h2 id="数字图像边缘检测的原理及方法"><a href="#数字图像边缘检测的原理及方法" class="headerlink" title="数字图像边缘检测的原理及方法"></a>数字图像边缘检测的原理及方法</h2><p>边缘是要提取目标与背景的边界线，只有检测出边缘信息才能把目标从背景中分离出来，并用于目标区域的识别、图像分割和图像滤波等，通过对边缘信息的检测可以最大程度地减少图像分析处理过程中的巨大数据量。图像中的边缘检测主要针对图像灰度变化的度量检测和定位，就是检测图像特性变化的位置，边缘的描述包含以下几个方面。<br>1.边缘的法线方向：在某点灰度变化最剧烈的方向，与边缘方向垂直。<br>2.边缘方向：与边缘法线方向垂直，是目标边界的切线方向。<br>3.边缘位置：边缘所在的坐标位置。<br>4.边缘强度：沿边缘法线方向图像局部变化强度的量度。<br>（因为我比较渣，还不会用公式编辑器，所以就手写拍照了<br><img src="https://note.youdao.com/yws/api/personal/file/WEBc85d0d7063f38e477248efb3f66b17cb?method=getImage&amp;version=11&amp;cstk=ygdDwOL6" alt=""></p>
 <h3 id="实现样例"><a href="#实现样例" class="headerlink" title="实现样例"></a>实现样例</h3><p>MATLAB在边缘检测方面常用的几种算子有：Roberts,Sobel,Prewitt,Laplacian和Canny等。通过调用edge函数可以十分方便地实现对图像的边缘检测。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">clear all;</span><br><span class="line">I=imread(&apos;circuit.tif&apos;);</span><br><span class="line">BW1=edge(I,&apos;prewitt&apos;);</span><br><span class="line">BW2=edge(I,&apos;canny&apos;);</span><br><span class="line">figure(&apos;name&apos;,&apos;灰度图像与边缘图像&apos;,&apos;numbertitle&apos;,&apos;off&apos;)</span><br><span class="line">subplot(131);</span><br><span class="line">imshow(I);</span><br><span class="line">title(&apos;灰度图像&apos;,&apos;fontsize&apos;,16)</span><br><span class="line">subplot(132);</span><br><span class="line">imshow(BW1);</span><br><span class="line">title(&apos;Prewitt算子检测边缘图像&apos;,&apos;fontsize&apos;,16)</span><br><span class="line">subplot(133);</span><br><span class="line">imshow(BW2);</span><br><span class="line">title(&apos;Canny算子检测边缘图像&apos;,&apos;fontsize&apos;,16)</span><br></pre></td></tr></table></figure></p>
-<p>如下图，可以看出Prewitt和Canny算子对图像边缘均有较好的提取效果<br><img src="https://note.youdao.com/yws/api/personal/file/WEBd900b6fd7e510a3f3a82520175482576?method=getImage&amp;version=12&amp;cstk=s1wY-l8J" alt=""></p>
-<h2 id="边缘检测–LVQ神经网络的原理与方法"><a href="#边缘检测–LVQ神经网络的原理与方法" class="headerlink" title="边缘检测–LVQ神经网络的原理与方法"></a>边缘检测–LVQ神经网络的原理与方法</h2>
+<p>如下图，可以看出Prewitt和Canny算子对图像边缘均有较好的提取效果<br><img src="https://note.youdao.com/yws/api/personal/file/WEBd900b6fd7e510a3f3a82520175482576?method=getImage&amp;version=12&amp;cstk=ygdDwOL6" alt=""></p>
+<h2 id="边缘检测–LVQ神经网络的原理与方法"><a href="#边缘检测–LVQ神经网络的原理与方法" class="headerlink" title="边缘检测–LVQ神经网络的原理与方法"></a>边缘检测–LVQ神经网络的原理与方法</h2><p>首先，教师信号的获取是先通过Sobel算子对样本图像进行处理得到图像的边缘，再经过人工筛选的方法，去除由于噪声引起的虚假边缘而得到的。作为LVQ神经网络输入的三个特征向量分别是中值特征向量，方向性信息特征向量，Krisch算子方向特征向量。由着三个特征向量，经过训练，可以有效提升边缘识别的精确度。</p>
+<h4 id="第一步：载入图像，进行灰度处理"><a href="#第一步：载入图像，进行灰度处理" class="headerlink" title="第一步：载入图像，进行灰度处理"></a>第一步：载入图像，进行灰度处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I0=imread(&apos;载入图像名称，需放在同一目录底&apos;);</span><br><span class="line">&gt;&gt; I=rgb2gray(I0)；</span><br><span class="line">&gt;&gt; BW0=edge(I,&apos;sobel&apos;);</span><br></pre></td></tr></table></figure>
+<h4 id="计算特征向量（关键点），首先需将图像数据格式转换为double或single格式才能参与MATLAB运算；其次，为提高运行速度，考虑优化Krisch算子模板，转化为矩阵运算。"><a href="#计算特征向量（关键点），首先需将图像数据格式转换为double或single格式才能参与MATLAB运算；其次，为提高运行速度，考虑优化Krisch算子模板，转化为矩阵运算。" class="headerlink" title="计算特征向量（关键点），首先需将图像数据格式转换为double或single格式才能参与MATLAB运算；其次，为提高运行速度，考虑优化Krisch算子模板，转化为矩阵运算。"></a>计算特征向量（关键点），首先需将图像数据格式转换为double或single格式才能参与MATLAB运算；其次，为提高运行速度，考虑优化Krisch算子模板，转化为矩阵运算。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"> [m,n]=size(I);</span><br><span class="line">&gt;&gt; BW=BW0(2:m-1,2:n-1);</span><br><span class="line">&gt;&gt; [row_1,col_1]=find(BW==1);</span><br><span class="line">&gt;&gt; Len_1=length(row_1);</span><br><span class="line">&gt;&gt; N1=100;</span><br><span class="line">&gt;&gt; choose_1=unidrnd(Len_1,N1,1);</span><br><span class="line">&gt;&gt; [row_0,col_0]=find(BW==0);</span><br><span class="line">&gt;&gt; Len_0=length(row_0);</span><br><span class="line">&gt;&gt; N0=100;</span><br><span class="line">&gt;&gt; choose_0=unidrnd(Len_0,N0,1);</span><br><span class="line">&gt;&gt; M_I=zeros((m-2)*(n-2),1);</span><br><span class="line">&gt;&gt; I_theta=zeros((m-2)*(n-2),1);</span><br><span class="line">&gt;&gt; Krisch=zeros((m-2)*(n-2),1);</span><br><span class="line">&gt;&gt; KH=[5,-3,-3,5,0,-3,5,-3,-3;</span><br><span class="line">5,5,-3,5,0,-3,-3,-3,-3;</span><br><span class="line">5,5,5,-3,0,-3,-3,-3,-3;</span><br><span class="line">-3,5,5,-3,0,5,-3,-3,-3;</span><br><span class="line">-3,-3,5,-3,0,5,-3,-3,5;</span><br><span class="line">-3,-3,-3,-3,0,5,-3,5,5;</span><br><span class="line">-3,-3,-3,-3,0,-3,5,5,5;</span><br><span class="line">-3,-3,-3,5,0,-3,5,5,-3];</span><br><span class="line"></span><br><span class="line">&gt;&gt; for i=1:(m-2)*(n-2)</span><br><span class="line">if i&lt;=Len_1</span><br><span class="line">I_L=double(I(row_1(i):row_1(i)+2,col_1(i):col_1(i)+2));</span><br><span class="line">M_I(i)=median(I_L(:));</span><br><span class="line">D_theta=[sum(I_L([8,7,4,1]))-sum(I_L([2,3,6,9]));</span><br><span class="line">sum(I_L([7,4,1,2]))-sum(I_L([3,6,9,8]));</span><br><span class="line">sum(I_L([4,1,2,3]))-sum(I_L([6,9,8,7]));</span><br><span class="line">sum(I_L([1,2,3,6]))-sum(I_L([9,8,7,4]))];</span><br><span class="line">I_theta(i)=max(abs(D_theta))-min(abs(D_theta));</span><br><span class="line">qK=KH*I_L(:);</span><br><span class="line">Krisch(i)=max(abs(qK))-min(abs(qK));</span><br><span class="line">else</span><br><span class="line">I_L=double(I(row_0(i-Len_1):row_0(i-Len_1)+2,col_0(i-Len_1):col_0(i-Len_1)+2));</span><br><span class="line">M_I(i)=median(I_L(:));</span><br><span class="line">D_theta=[sum(I_L([8,7,4,1]))-sum(I_L([2,3,6,9]));</span><br><span class="line">sum(I_L([7,4,1,2]))-sum(I_L([3,6,9,8]));</span><br><span class="line">sum(I_L([4,1,2,3]))-sum(I_L([6,9,8,7]));</span><br><span class="line">sum(I_L([1,2,3,6]))-sum(I_L([9,8,7,4]))];</span><br><span class="line">I_theta(i)=max(abs(D_theta))-min(abs(D_theta));</span><br><span class="line">qK=KH*I_L(:);</span><br><span class="line">Krisch(i)=max(abs(qK))-min(abs(qK));</span><br><span class="line">end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h4 id="生成神经网络训练数据集，对神经网络进行训练，通过随机抽取边缘点与非边缘点对LVQ进行训练，完成后可得到各点计算得到的特征向量（那三个）来判断是否是边缘点，以此优化。"><a href="#生成神经网络训练数据集，对神经网络进行训练，通过随机抽取边缘点与非边缘点对LVQ进行训练，完成后可得到各点计算得到的特征向量（那三个）来判断是否是边缘点，以此优化。" class="headerlink" title="生成神经网络训练数据集，对神经网络进行训练，通过随机抽取边缘点与非边缘点对LVQ进行训练，完成后可得到各点计算得到的特征向量（那三个）来判断是否是边缘点，以此优化。"></a>生成神经网络训练数据集，对神经网络进行训练，通过随机抽取边缘点与非边缘点对LVQ进行训练，完成后可得到各点计算得到的特征向量（那三个）来判断是否是边缘点，以此优化。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> muntrain=[choose_1;choose_0];</span><br><span class="line">&gt;&gt;P_train=[M_I(muntrain)&apos;;I_theta(muntrain)&apos;;Krisch(muntrain)&apos;];</span><br><span class="line">&gt;&gt; Tc_train=[ones(1,N1),2*ones(1,N0)];</span><br><span class="line">&gt;&gt; T_train=ind2vec(Tc_train);</span><br><span class="line">&gt;&gt; rate=&#123;0.5,0.5&#125;;</span><br><span class="line">&gt;&gt; net=newlvq(minmax(P_train),20,cell2mat(rate),0.01,&apos;learnlv1&apos;);</span><br><span class="line">&gt;&gt; net.trainParam.epochs=100;</span><br><span class="line">&gt;&gt; net.trainParam.goal=0.001;</span><br><span class="line">&gt;&gt; net.trainParam.lr=0.1;</span><br><span class="line">&gt;&gt; net=train(net,P_train,T_train);</span><br><span class="line">&gt;&gt; P_test=[M_I&apos;;I_theta&apos;;Krisch&apos;];</span><br><span class="line">&gt;&gt; T_sim=sim(net,P_test);</span><br><span class="line">&gt;&gt; Tc_sim=vec2ind(T_sim);</span><br><span class="line">&gt;&gt; BW1=zeros(m,n);</span><br><span class="line">&gt;&gt; nI=find(Tc_sim==1);</span><br><span class="line">&gt;&gt; nI1=find(nI&lt;=Len_1);</span><br><span class="line">&gt;&gt; BW1(col_1(nI(nI1))*m+row_1(nI(nI1))+1)=1;</span><br><span class="line">&gt;&gt; nI1=find(nI&gt;Len_1);</span><br><span class="line">&gt;&gt; BW1(col_0(nI(nI1)-Len_1)*m+row_0(nI(nI1)-Len_1)+1)=1;</span><br></pre></td></tr></table></figure>
+<h4 id="最后，显示图像，以示对比。"><a href="#最后，显示图像，以示对比。" class="headerlink" title="最后，显示图像，以示对比。"></a>最后，显示图像，以示对比。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> figure(&apos;name&apos;,&apos;灰度图像与边缘图像&apos;,&apos;numbertitle&apos;,&apos;off&apos;)</span><br><span class="line">&gt;&gt; subplot(131);</span><br><span class="line">&gt;&gt; imshow(I);</span><br><span class="line">&gt;&gt; title(&apos;灰度图像&apos;,&apos;fontsize&apos;,16)</span><br><span class="line">&gt;&gt; subplot(132);</span><br><span class="line">&gt;&gt; imshow(BW);</span><br><span class="line">&gt;&gt; title(&apos;Sobel检测边缘图像&apos;,&apos;fontsize&apos;,16);</span><br><span class="line">&gt;&gt; subplot(133);</span><br><span class="line">&gt;&gt; imshow(BW1);</span><br><span class="line">&gt;&gt; title(&apos;神经网络检测边缘图像&apos;,&apos;fontsize&apos;,16);</span><br></pre></td></tr></table></figure>
+<p>效果展示<br><img src="https://note.youdao.com/yws/api/personal/file/WEB6cca8606aae714624754aad785f6d64f?method=getImage&amp;version=13&amp;cstk=ygdDwOL6" alt=""></p>
+<h2 id="人脸识别朝向问题"><a href="#人脸识别朝向问题" class="headerlink" title="人脸识别朝向问题"></a>人脸识别朝向问题</h2>
       
     </div>
     <footer class="article-footer">
@@ -122,7 +164,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/06/实验/一个简单的RPG游戏体验/">一个简单的RPG游戏体验</a>
+      <a class="article-title" href="/2019/08/06/实验/一个简单的RPG游戏体验/">一个简单的RPG游戏体验（后期会补足</a>
     </h1>
   
 
@@ -280,11 +322,15 @@
       <ul>
         
           <li>
-            <a href="/2019/08/07/数字图像边缘检测/">数字图像边缘检测&amp;边缘检测LVQ神经网络（计划是完成人脸识别朝向，会动态更新</a>
+            <a href="/2019/08/09/数字图像色彩分层提取/">数字图像提取</a>
           </li>
         
           <li>
-            <a href="/2019/08/06/实验/一个简单的RPG游戏体验/">一个简单的RPG游戏体验</a>
+            <a href="/2019/08/07/数字图像边缘检测/">图像识别（会步步深入，计划是完成人脸识别朝向，再之后可能会做复杂一点的人脸识别问题，会动态更新</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/06/实验/一个简单的RPG游戏体验/">一个简单的RPG游戏体验（后期会补足</a>
           </li>
         
           <li>
